@@ -31,3 +31,9 @@ def build_chat_prompt(system_prompt: str, user_text: str, family: str) -> str:
         "<|im_start|>assistant\n"
     )
 
+
+def conversation_template_flag(family: str) -> str | None:
+    family_name = family.lower()
+    if family_name in {"qwen", "gemma"}:
+        return None
+    return None

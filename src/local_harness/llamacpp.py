@@ -31,13 +31,14 @@ def resolve_binary(root_dir: Path) -> Path:
 def build_invocation(
     config: AppConfig,
     profile: ModelProfile,
-    prompt: str,
+    prompt: str | None,
     *,
     ctx_size: int | None = None,
     threads: int | None = None,
     temperature: float | None = None,
     top_p: float | None = None,
     n_gpu_layers: int | None = None,
+    conversation_mode: bool = False,
 ) -> LlamaInvocation:
     binary_path = resolve_binary(config.root_dir)
     defaults = config.defaults
@@ -57,8 +58,9 @@ def build_invocation(
         str(top_p if top_p is not None else defaults.top_p),
         "-ngl",
         str(n_gpu_layers if n_gpu_layers is not None else defaults.n_gpu_layers),
-        "-p",
-        prompt,
     ]
+    if conversation_mode:
+        command.append("-cnv")
+    elif prompt is not None:
+        command.extend(["-p", prompt])
     return LlamaInvocation(binary_path=str(binary_path), command=command)
-

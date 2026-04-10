@@ -22,7 +22,6 @@ def build_parser() -> argparse.ArgumentParser:
     prompt_parser.add_argument("--profile", help="Model profile to use.")
 
     chat_parser = subparsers.add_parser("chat", help="Build an interactive llama.cpp command.")
-    chat_parser.add_argument("--text", required=True, help="Opening user text.")
     chat_parser.add_argument("--profile", help="Model profile to use.")
 
     agent_parser = subparsers.add_parser("agent", help="Build a coding-agent llama.cpp command.")
@@ -59,6 +58,13 @@ def _build_prompt_command(user_text: str, profile_name: str | None) -> str:
     return invocation.shell_command()
 
 
+def _build_chat_command(profile_name: str | None) -> str:
+    config = load_app_config(_root_dir())
+    profile = resolve_profile(config, profile_name)
+    invocation = build_invocation(config, profile, None, conversation_mode=True)
+    return invocation.shell_command()
+
+
 def cmd_setup_model(profile_name: str) -> str:
     config = load_app_config(_root_dir())
     profile = resolve_profile(config, profile_name)
@@ -91,8 +97,7 @@ def main() -> None:
         return
 
     if args.command == "chat":
-        command = _build_prompt_command(args.text, args.profile)
-        print(f"{command} -i")
+        print(_build_chat_command(args.profile))
         return
 
     if args.command == "agent":

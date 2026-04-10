@@ -16,10 +16,10 @@ def build_agent_prompt(task: AgentTask, root_dir: Path) -> str:
         "You are operating as a local offline coding agent.\n"
         "Work in planning-first mode and be explicit about assumptions.\n"
         "Do not execute shell commands automatically.\n"
+        "Prefer concise output grouped into Summary, Proposed File Changes, and Suggested Commands.\n"
         "When shell commands are needed, emit a section titled 'Suggested Commands'.\n"
         "When file edits are needed, emit a section titled 'Proposed File Changes'.\n"
         f"Harness root: {root_dir}\n"
         f"Target repository: {repo}\n"
         f"Task: {task.task}\n"
     )
-
