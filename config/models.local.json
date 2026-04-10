@@ -1,0 +1,33 @@
+{
+  "defaults": {
+    "model_profile": "qwen-coder-7b",
+    "ctx_size": 8192,
+    "threads": 12,
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "n_gpu_layers": 35,
+    "log_dir": "logs",
+    "session_dir": "sessions"
+  },
+  "profiles": {
+    "qwen-coder-7b": {
+      "family": "qwen",
+      "description": "Default coding profile for local agent work.",
+      "model_path": "models/qwen2.5-coder-7b-instruct-q4_k_m.gguf",
+      "prompt_template": "prompts/coder_system.txt"
+    },
+    "gemma-small-it": {
+      "family": "gemma",
+      "description": "Secondary general-purpose instruct profile.",
+      "model_path": "models/gemma-3-1b-it-Q4_K_M.gguf",
+      "prompt_template": "prompts/general_system.txt"
+    },
+    "qwen-coder-7b-exp": {
+      "family": "qwen",
+      "description": "Optional experimental profile for future uncensored weights.",
+      "model_path": "models/qwen2.5-coder-7b-exp-q4_k_m.gguf",
+      "prompt_template": "prompts/coder_system.txt",
+      "experimental": true
+    }
+  }
+}

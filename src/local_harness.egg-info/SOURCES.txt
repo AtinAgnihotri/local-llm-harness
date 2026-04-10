@@ -1,0 +1,14 @@
+README.md
+pyproject.toml
+src/local_harness/__init__.py
+src/local_harness/agent.py
+src/local_harness/cli.py
+src/local_harness/config.py
+src/local_harness/doctor.py
+src/local_harness/llamacpp.py
+src/local_harness/prompts.py
+src/local_harness.egg-info/PKG-INFO
+src/local_harness.egg-info/SOURCES.txt
+src/local_harness.egg-info/dependency_links.txt
+src/local_harness.egg-info/entry_points.txt
+src/local_harness.egg-info/top_level.txt

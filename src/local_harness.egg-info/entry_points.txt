@@ -1,0 +1,2 @@
+[console_scripts]
+local-harness = local_harness.cli:main

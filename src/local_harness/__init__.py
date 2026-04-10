@@ -1,0 +1,2 @@
+"""Local offline LLM harness."""
+
