@@ -83,7 +83,7 @@ chmod +x runner.sh
 
 ## 8. Optional: Hugging Face CLI for model downloads
 
-Install the Hugging Face CLI inside the venv:
+Install the Hugging Face Hub package inside the venv. Use the `hf` command, not the deprecated `huggingface-cli` command:
 
 ```bash
 . .venv/bin/activate
@@ -96,3 +96,4 @@ pip install -U huggingface_hub
 - NCCL warnings are safe to ignore on a single-GPU laptop.
 - OpenSSL warnings during `llama.cpp` configure do not block local `llama-cli` usage.
 - Models are downloaded separately per machine and configured through `config/models.local.json`.
+- `huggingface-cli` is deprecated; use `hf` instead.
